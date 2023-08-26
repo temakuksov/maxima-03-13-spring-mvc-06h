@@ -9,13 +9,6 @@ import ru.maxima.springwebmvc.dao.PersonDAO;
 import ru.maxima.springwebmvc.entity.Person;
 import ru.maxima.springwebmvc.util.PersonValidator;
 
-import java.util.Collections;
-import java.util.List;
-
-
-/**
- * @author AramaJava 26.07.2023
- */
 
 @Controller
 @RequestMapping("/people")
@@ -50,9 +43,9 @@ public class PeopleController {
     @PostMapping()
     public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
 
-        personValidator.validate(person, bindingResult);
+       // personValidator.validate(person, bindingResult);
 
-        if (bindingResult.hasErrors()) return "people/new";
+       // if (bindingResult.hasErrors()) return "people/new";
 
         personDAO.save(person);
         return "redirect:/people";
@@ -67,13 +60,12 @@ public class PeopleController {
     @PostMapping("/{id}")
     private String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
                           @PathVariable("id") int id) {
-
-        personValidator.validate(person, bindingResult);
+       /* personValidator.validate(person, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }
-
+*/
         personDAO.update(id, person);
         return "redirect:/people";
     }
@@ -84,7 +76,7 @@ public class PeopleController {
         return "redirect:/people";
     }
 
-    @GetMapping("/search")
+  /*  @GetMapping("/search")
     public String findByName(Model model, @RequestParam("keyword") String keyword) {
         List<Person> searchResult;
         if (keyword != null && !keyword.isEmpty()) {
@@ -95,7 +87,7 @@ public class PeopleController {
         model.addAttribute("searchResult", searchResult);
         model.addAttribute("keyword", keyword);
         return "people/search";
-    }
+    }*/
 
 }
 

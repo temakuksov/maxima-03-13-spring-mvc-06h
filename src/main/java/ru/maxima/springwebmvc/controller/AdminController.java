@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.maxima.springwebmvc.dao.PersonDAO;
 import ru.maxima.springwebmvc.entity.Person;
 
-/**
- * @author AramaJava 05.08.2023
- */
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {

@@ -3,10 +3,6 @@ package ru.maxima.springwebmvc.config;
 import jakarta.annotation.Nonnull;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-/**
- * @author AramaJava 24.07.2023
- */
-
 public class MyServletInitializer
         extends AbstractAnnotationConfigDispatcherServletInitializer {
 

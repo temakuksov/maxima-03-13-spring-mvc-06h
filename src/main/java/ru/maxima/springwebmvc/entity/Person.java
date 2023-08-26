@@ -1,12 +1,15 @@
 package ru.maxima.springwebmvc.entity;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-/**
- * @author AramaJava 26.07.2023
- */
-
+@Entity
+@Table(name="person")
 public class Person {
+
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message = "Поле не должно быть пустым")
