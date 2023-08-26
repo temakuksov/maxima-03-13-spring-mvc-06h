@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peoples</title>
+</head>
+<body>
+<div th:each="person:${people}">
+  <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()} + ', ' + ${person.getSurname()} + ', ' + ${person.getAge()} + ', ' + ${person.getEmail()}">user</a>
+</div>
+<br>
+<hr>
+<a th:href="@{/people/new}">Create new Person</a>
+<br>
+<br>
+<form th:action="@{people/search}" method="get" th:method="GET">
+    <label>
+        <input type="text" th:name="keyword"  placeholder="Find by name" size="50" required >
+    </label>
+    <label>
+    <input th:type="submit" value="Search">
+</label>
+</form>
+</body>
+</html>
