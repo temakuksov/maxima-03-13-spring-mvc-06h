@@ -19,7 +19,7 @@ public class AdminController {
 
     @GetMapping
     public String getForm(Model model, @ModelAttribute("person")Person person) {
-        model.addAttribute("allPeople", personDAO.index());
+        model.addAttribute("allPeople", personDAO.getAllPersons());
         return "people/adminPage";
     }
 
