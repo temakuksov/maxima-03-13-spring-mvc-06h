@@ -71,10 +71,18 @@ public class PersonDAO {
         session.remove(session.get(Person.class, id));
     }
 
- /*   public List<Person> findByName(String keyword) {
-        String sql = "select * from person p where p.name like ?";
-        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person.class), keyword + '%');
+    @Transactional
+    public List<Person> findByName(String keyword) {
+       Session session = sessionFactory.getCurrentSession();
+       String query = "FROM Person p where p.name like '%".concat(keyword).concat("%'");
+       return session.createQuery(query, Person.class).getResultList();
     }
-*/
+
+    @Transactional
+    public List<Person> findById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        String query = "FROM Person p where p.id=".concat(String.valueOf(id));
+        return session.createQuery(query, Person.class).getResultList();
+    }
 
 }

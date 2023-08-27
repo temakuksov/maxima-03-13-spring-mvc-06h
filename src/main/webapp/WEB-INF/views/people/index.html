@@ -13,13 +13,22 @@
 <a th:href="@{/people/new}">Create new Person</a>
 <br>
 <br>
-<form th:action="@{people/search}" method="get" th:method="GET">
+<form th:action="@{people/search-name}" method="get" th:method="GET">
     <label>
-        <input type="text" th:name="keyword"  placeholder="Find by name" size="50" required >
+        <input type="text" th:name="keyword"  placeholder="Find by name" size="28" required>
     </label>
     <label>
     <input th:type="submit" value="Search">
-</label>
+    </label>
+</form>
+<br>
+<form th:action="@{people/search-id}" method="get" th:method="GET">
+    <label>
+        <input type="text" th:name="id" placeholder="Поиск по ID" size="28" required>
+    </label>
+    <label>
+        <input th:type="submit" value="Search">
+    </label>
 </form>
 </body>
 </html>

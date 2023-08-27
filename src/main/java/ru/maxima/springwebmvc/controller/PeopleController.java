@@ -9,6 +9,9 @@ import ru.maxima.springwebmvc.dao.PersonDAO;
 import ru.maxima.springwebmvc.entity.Person;
 import ru.maxima.springwebmvc.util.PersonValidator;
 
+import java.util.Collections;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/people")
@@ -76,18 +79,31 @@ public class PeopleController {
         return "redirect:/people";
     }
 
-  /*  @GetMapping("/search")
+   @GetMapping("/search-name")
     public String findByName(Model model, @RequestParam("keyword") String keyword) {
-        List<Person> searchResult;
+       List<Person> searchResult;
         if (keyword != null && !keyword.isEmpty()) {
-            searchResult = personDAO.findByName(keyword);
+           searchResult = personDAO.findByName(keyword);
+       } else {
+           searchResult = Collections.emptyList();
+       }
+       model.addAttribute("searchResult", searchResult);
+       model.addAttribute("keyword", keyword);
+       return "people/search-name";
+    }
+
+    @GetMapping("/search-id")
+    public String findById(Model model, @RequestParam("id") int id) {
+        List<Person> searchResult;
+        if (id > 0) {
+            searchResult = personDAO.findById(id);
         } else {
             searchResult = Collections.emptyList();
         }
         model.addAttribute("searchResult", searchResult);
-        model.addAttribute("keyword", keyword);
-        return "people/search";
-    }*/
+        model.addAttribute("id", id);
+        return "people/search-id";
+    }
 
 }
 
